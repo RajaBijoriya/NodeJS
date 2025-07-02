@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emp Management</title>
+</head>
+
+<body>
+    <h1>Employee List</h1>
+    <a href="/add">Add New Employee</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone </th>
+                <th>Password</th>
+                <th>Company</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% employee.forEach(employee=> { %>
+                <tr>
+                    <td>
+                        <%= employee.name %>
+                    </td>
+                    <td>
+                        <%= employee.email %>
+                    </td>
+                    <td>
+                        <%= employee.phone %>
+                    </td>
+                    <td>
+                        <%= employee.password %>
+                    </td>
+                    <td>
+                        <%= employee.company %>
+                    </td>
+                   
+                    <td>
+                        <a href="/edit/<%= employee._id%>">Edit</a>
+                        <a href="/delete/<%= employee._id%>">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>
