@@ -1,20 +1,29 @@
-// register page 
-// login 
+// register
+// login
+
+// install express , mongoose , multer
+
 const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
+const user_routes = require("./routes/userRoute");
 
+const app = express();
 const PORT = 8080;
 
-mongoose.connect("mongodb://127.0.0.1:27017/JWT_Auth").then(()=> {
-    console.log("Mongo connected");
-}).catch((err)=> {
-    console.log("error", err);
-})
+mongoose
+  .connect("mongodb://127.0.0.1:27017/JWT_Auth")
+  .then(() => {
+    console.log("mongoDb Connected");
+  })
+  .catch((err) => {
+    console.log("error ", err);
+  });
 
+// http://localhost:8080/api/register
+app.use("/api", user_routes);
 
-// listen 
+// listen
 
-app.listen(PORT, ()=>  {
-    console.log("server startes successfully")
-})
+app.listen(PORT, (req, res) => {
+  console.log("Server Started...");
+});
